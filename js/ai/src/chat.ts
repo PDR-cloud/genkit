@@ -137,7 +137,9 @@ export class Chat {
     return runWithSession(this.session.registry, this.session, () =>
       runInNewSpan(
         this.session.registry,
-        { metadata: { name: 'send' } },
+        {
+          metadata: { name: 'send', metadata: { sessionId: this.session.id } },
+        },
         async () => {
           let resolvedOptions: ChatGenerateOptions<O, CustomOptions>;
           let streamingCallback:
