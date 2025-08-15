@@ -39,12 +39,12 @@ import {
   Content,
   FunctionDeclaration,
   FunctionDeclarationSchemaType,
+  Part as GeminiPart,
   GenerateContentCandidate,
   GenerateContentResponse,
   GenerateContentResult,
   HarmBlockThreshold,
   HarmCategory,
-  Part as GeminiPart,
   StartChatParams,
   VertexAI,
 } from '@google-cloud/vertexai';
@@ -210,6 +210,22 @@ export const gemini20Flash = modelRef({
   version: 'gemini-2.0-flash-001',
 });
 
+export const gemini25Flash = modelRef({
+  name: 'vertexai/gemini-2.5-flash',
+  info: {
+    label: 'Vertex AI - Gemini 2.5 Flash',
+    versions: ['gemini-2.5-flash'],
+    supports: {
+      multiturn: true,
+      media: true,
+      tools: true,
+      systemRole: true,
+    },
+  },
+  configSchema: GeminiConfigSchema,
+  version: 'gemini-2.5-flash',
+});
+
 export const SUPPORTED_V1_MODELS = {
   'gemini-1.0-pro': geminiPro,
   'gemini-1.0-pro-vision': geminiProVision,
@@ -223,6 +239,7 @@ export const SUPPORTED_V15_MODELS = {
   'gemini-1.5-flash-preview': gemini15FlashPreview,
   // 'gemini-2.0-flash-exp': gemini20FlashExp,
   'gemini-2.0-flash': gemini20Flash,
+  'gemini-2.5-flash': gemini25Flash,
 };
 
 export const SUPPORTED_GEMINI_MODELS = {
